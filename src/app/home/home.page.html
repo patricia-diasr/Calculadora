@@ -1,0 +1,67 @@
+<ion-content [fullscreen]="true">
+  <div id="container">
+  
+  <!-- Controles -->
+  <div id="controls">
+    <div class="control"><ion-icon name="receipt-outline"></ion-icon></div>
+    <div class="control"><ion-icon name="sunny-outline"></ion-icon></div>
+  </div>
+
+  <!-- Calculadora -->
+  <div id="calculadora"> 
+    <!-- Visor -->
+    <ion-row>
+      <ion-col size="12" id="visor">
+        <!-- Conta -->
+        <ion-row>
+          <ion-col size="12" id="conta">{{this.conta}}</ion-col>
+        </ion-row>
+        <!-- Simbolo de igual -->
+        <ion-row>
+          <ion-col size="12" id="igual">=</ion-col>
+        </ion-row>
+        <!-- Resultado da conta -->
+        <ion-row>
+          <ion-col size="12" id="resultado">{{this.resultado}}</ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <!-- Teclas da Calculadora -->
+    <ion-row>
+      <ion-col size="12" id="guardaBotoes">
+        <ion-row>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('C')">C</div></ion-col>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('neg')">+/-</div></ion-col>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('del')"><ion-icon name="backspace-outline" id="deletar"></ion-icon></div></ion-col>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('/')">/</div></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('7')">7</div></ion-col>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('8')">8</div></ion-col>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('9')">9</div></ion-col>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('*')">X</div></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('4')">4</div></ion-col>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('5')">5</div></ion-col>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('6')">6</div></ion-col>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('-')">-</div></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('1')">1</div></ion-col>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('2')">2</div></ion-col>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('3')">3</div></ion-col>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('+')">+</div></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('0')">0</div></ion-col>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('.')">.</div></ion-col>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('%')">%</div></ion-col>
+          <ion-col class="button" size="3"><div class="botao" (click)="clicar('=')">=</div></ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </div>
+  </div>
+</ion-content>
