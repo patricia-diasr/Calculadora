@@ -1,14 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, MenuController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
-  standalone: true,
-  imports: [IonicModule, CommonModule],
+	selector: 'app-home',
+	templateUrl: 'home.page.html',
+	styleUrls: ['home.page.scss'],
+	standalone: true,
+	imports: [IonicModule, CommonModule],
 })
+
 export class HomePage {
 
 	numeros: any = ['0','1','2','3','4','5','6','7','8','9'];  // Array de algarismos
@@ -23,10 +24,20 @@ export class HomePage {
 	larguraTela: number = 0;
 	limiteCaracteres: number = 27;
 
+	historico: any = [];
+
 	// Define tamanho inicial da tela
 	ngOnInit() {
 		this.larguraTela = window.innerWidth;
 		this.definirLimiteCaracteres();
+		localStorage.setItem('historico', '[]')
+	}
+
+	constructor(private menuCtrl: MenuController) {}
+
+	abreHistorico() {
+		this.menuCtrl.open('historico');
+		this.historico = JSON.parse(localStorage.getItem('historico') || '[]');
 	}
 
 	// Define tamanho da tela quando esse tamanho muda
@@ -57,7 +68,7 @@ export class HomePage {
 		if(this.conta.length >= this.limiteCaracteres){   // Limite de caracteres
 			return; 
 		}
-		if(tecla == 'C' || tecla == 'Delete'){   // Se a tecla escolhida é o C zera configuaração
+		if(tecla == 'C' || tecla == 'c' || tecla == 'Delete'){   // Se a tecla escolhida é o C zera configuaração
 			this.digponto = true;
 			this.negativo = true;
 			this.conta = '';
@@ -205,8 +216,10 @@ export class HomePage {
 	
 	// Função para tecla de igual
 	cliqueIgual(): void {
+		let contaAnterior = this.conta;
 		this.conta = this.calcular();
 		this.conta = this.conta<0 ? `(${this.conta.toString()})` : this.conta.toString();
+		this.gravarHistorico(contaAnterior, this.conta);
 		this.resultado = ''
 	}
 	
@@ -214,6 +227,13 @@ export class HomePage {
 	calcular(): any {
 		let resultado = Number(eval(this.conta));
 		return resultado;
+	}
+
+	async gravarHistorico(conta:string, resultado: number) {
+		let historico = localStorage.getItem('historico') || '[]';
+		let arrayHistorico = JSON.parse(historico);
+		arrayHistorico.unshift([resultado, conta]);
+		localStorage.setItem('historico', JSON.stringify(arrayHistorico));
 	}
 	
 	// Função para achar ultima operação uutilizada
@@ -243,4 +263,28 @@ export class HomePage {
 		this.clicar(event.key)
 	}
 
+	// Tema
+
+    root: any = document.documentElement;
+	theme: any = {
+		light(){
+			document.documentElement.style.setProperty('--ion-color-primary','#f4f5f8');
+			document.documentElement.style.setProperty('--ion-color-secondary','#FF9BEB');
+			document.documentElement.style.setProperty('--ion-color-tertiary','#B0FF9B');
+			document.documentElement.style.setProperty('--ion-color-quaternary','#B3499D');
+			document.documentElement.style.setProperty('--font-color','#6DB35B');
+			document.documentElement.style.setProperty('--claro', 'none');
+			document.documentElement.style.setProperty('--escuro', 'block');
+		},
+		dark(){
+			document.documentElement.style.setProperty('--ion-color-primary','#012340');
+			document.documentElement.style.setProperty('--ion-color-secondary','#025939');
+			document.documentElement.style.setProperty('--ion-color-tertiary','#027333');
+			document.documentElement.style.setProperty('--ion-color-quaternary','#04D939');
+			document.documentElement.style.setProperty('--font-color','#f4f5f8');
+			document.documentElement.style.setProperty('--claro', 'block');
+			document.documentElement.style.setProperty('--escuro', 'none');
+		}
+	}
+	
 }

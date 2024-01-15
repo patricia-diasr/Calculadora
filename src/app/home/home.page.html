@@ -1,10 +1,29 @@
-<ion-content [fullscreen]="true">
+<ion-menu menuId="historico" contentId="main-content" side="end">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title >Histórico</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content mode='ios' color="primary">
+    <ion-list [inset]="true" lines="full" *ngIf="historico != []">
+      <ion-item *ngFor="let item of historico">
+        <ul>
+          <span class="resultadoHistorico"><li>{{item[0]}}</li></span>
+          <li>{{item[1]}}</li>
+        </ul>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-content [fullscreen]="true" id="main-content">
   <div id="container">
-  
+
   <!-- Controles -->
   <div id="controls">
-    <div class="control"><ion-icon name="receipt-outline"></ion-icon></div>
-    <div class="control"><ion-icon name="sunny-outline"></ion-icon></div>
+    <div class="control" (click)="abreHistorico()"><ion-icon name="receipt-outline"></ion-icon></div>
+    <div class="control" id="claro" (click)="theme.light()"><ion-icon name="sunny-outline"></ion-icon></div>
+    <div class="control" id="escuro" (click)="theme.dark()"><ion-icon name="moon-outline"></ion-icon></div>
   </div>
 
   <!-- Calculadora -->

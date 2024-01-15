@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Cousine&display=swap');
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Cousine', monospace;
 }
 
 #container{
@@ -14,8 +17,8 @@
 }
 
 #controls{
-  font-size: 2em;
-  color: var(--ion-color-light);
+  font-size: 2.3em;
+  color: var(--font-color);
   position: absolute;
   top: 0;
   right: 0;
@@ -26,6 +29,14 @@
 
 .control{
   margin: 0.3em 0.5em 0.3em 0;
+}
+
+#claro{
+  display: var(--claro);
+}
+
+#escuro{
+  display: var(--escuro);
 }
 
 #calculadora{
@@ -41,18 +52,18 @@
 }
 
 #conta{
-  color: var(--ion-color-light);
+  color: var(--font-color);
   height: 12vh;
-  font-size:2.2em;
+  font-size: 2.4em;
   display: flex;
   align-items: center;
   justify-content: end;
 }
 
 #igual{
-  color: var(--ion-color-light);
+  color: var(--font-color);
   height: 2vh;
-  font-size:2.2em;
+  font-size: 2.4em;
   display: flex;
   align-items: center;
   justify-content: end;
@@ -61,7 +72,7 @@
 #resultado{
   color: var(--ion-color-quaternary);
   height: 16vh;
-  font-size:2.4em;
+  font-size: 2.4em;
   display: flex;
   align-items: center;
   justify-content: end;
@@ -73,7 +84,7 @@
 }
 
 .button{
-  color: var(--ion-color-light);
+  color: var(--font-color);
   height: 9vh;
   display: flex;
   align-items: center;
@@ -90,6 +101,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.3em;
 }
 
 .botao:hover {
@@ -97,8 +109,28 @@
 }
 
 #deletar{
-  font-size: 1.5em;
+  font-size: 1.7em;
 }
+
+
+// Histórico
+
+.resultadoHistorico{
+  font-weight: bolder;
+  color: var(--ion-color-quaternary);
+}
+
+ul{
+  margin: 5px 0;
+  font-size: 1.2em;
+}
+
+ion-title{
+  color: var(--font-color);
+  font-weight: bolder;
+  text-align: center;
+}
+
 
 @media (max-width:560px) {
   #calculadora{
