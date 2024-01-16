@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Cousine', monospace;
+  transition: ease 0.5s;
 }
 
 #container{
@@ -16,6 +17,16 @@
   justify-content: center;
 }
 
+#calculadora{
+  border: 5px solid var(--ion-color-tertiary);
+  border-radius: 10px;
+  height: 80vh;
+  width: 50%;
+}
+
+
+// Opções
+
 #controls{
   font-size: 2.3em;
   color: var(--font-color);
@@ -25,6 +36,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .control{
@@ -39,12 +51,8 @@
   display: var(--escuro);
 }
 
-#calculadora{
-  border: 5px solid var(--ion-color-tertiary);
-  border-radius: 10px;
-  height: 80vh;
-  width: 50%;
-}
+
+// Visor
 
 #visor{
   height: 30vh;
@@ -58,6 +66,9 @@
   display: flex;
   align-items: center;
   justify-content: end;
+  width: 100%;
+  overflow-x: auto;
+  padding-left: 6vh; 
 }
 
 #igual{
@@ -76,7 +87,30 @@
   display: flex;
   align-items: center;
   justify-content: end;
+  width: 100%;
+  overflow-x: auto;
+  padding-left: 6vh; 
 }
+
+.escritaVisor{
+  max-width: 100%;
+  overflow-x: auto; 
+  white-space: nowrap;
+}
+
+
+// Barra de Rolagem
+
+::-webkit-scrollbar {
+  height: 2px;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #eee; 
+}
+
+// Botões
 
 #guardaBotoes{
   height: 50vh;
@@ -102,6 +136,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1.3em;
+  cursor: pointer;
 }
 
 .botao:hover {
@@ -109,7 +144,7 @@
 }
 
 #deletar{
-  font-size: 1.7em;
+  font-size: 1.5em;
 }
 
 
@@ -120,9 +155,17 @@
   color: var(--ion-color-quaternary);
 }
 
+ion-item:hover {
+  filter: brightness(0.95);
+}
+
 ul{
   margin: 5px 0;
   font-size: 1.2em;
+  max-width: 100%;
+  overflow-x: auto; 
+  white-space: nowrap;
+  cursor: pointer;
 }
 
 ion-title{
@@ -131,6 +174,8 @@ ion-title{
   text-align: center;
 }
 
+
+// Responsividade 
 
 @media (max-width:560px) {
   #calculadora{
@@ -150,8 +195,10 @@ ion-title{
   }
   #conta{
     font-size:2em;
+    padding-left: 3vh;
   }
   #resultado{
-    font-size:2.2em;
+    font-size: 2.2em;
+    padding-left: 3vh;
   }
 }

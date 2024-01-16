@@ -6,7 +6,7 @@
   </ion-header>
   <ion-content mode='ios' color="primary">
     <ion-list [inset]="true" lines="full" *ngIf="historico != []">
-      <ion-item *ngFor="let item of historico">
+      <ion-item *ngFor="let item of historico" (click)="cliqueHistorico(item[0])">
         <ul>
           <span class="resultadoHistorico"><li>{{item[0]}}</li></span>
           <li>{{item[1]}}</li>
@@ -33,7 +33,7 @@
       <ion-col size="12" id="visor">
         <!-- Conta -->
         <ion-row>
-          <ion-col size="12" id="conta">{{this.conta}}</ion-col>
+          <div id="conta"><p class="escritaVisor">{{this.conta}}</p></div>
         </ion-row>
         <!-- Simbolo de igual -->
         <ion-row>
@@ -41,7 +41,7 @@
         </ion-row>
         <!-- Resultado da conta -->
         <ion-row>
-          <ion-col size="12" id="resultado">{{this.resultado}}</ion-col>
+          <div id="resultado"><span class="escritaVisor">{{this.resultado}}</span></div>
         </ion-row>
       </ion-col>
     </ion-row>
