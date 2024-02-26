@@ -132,7 +132,6 @@ main {
   background-color: #eee; 
 }
 
-
 /* Botões */
 
 #botoes {
@@ -229,6 +228,8 @@ ul li span {
 aside .resultado {
   font-weight: bold;
 }
+
+/* Responisvidade */
 
 @media (max-width: 580px) {
   #calculadora {
